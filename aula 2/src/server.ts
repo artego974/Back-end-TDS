@@ -1,19 +1,24 @@
-import express, { Application, Request, Response } from 'express';
+import express, { Application, NextFunction, Request, Response } from 'express';
 
 const app: Application = express();
-const PORT: number = 3000;
+const PORT: number = 4000;
 
 app.use(express.json());
 
 // 🔸 Middleware
 const porteiroMiddleware = (req: Request, res: Response, next: Function) => {
-  console.log(`📢 Requisição recebida em: ${req.method} ${req.url}`);
-  next(); // Permite a requisição continuar para a rota
+  console.log(`Requisição recebida em: ${req.method} ${req.url}`);
+  next(); 
 };
 
-// ✅ Registrar o middleware antes das rotas
 app.use(porteiroMiddleware);
 
+const dataLog = (req:Request, res:Response, next:NextFunction)=>{
+  let data: Date = new Date();
+  console.log(`requisição feita com ${data}`)
+  next();
+}
+app.use(dataLog);
 // 🔹 Rota GET (Buscar dados)
 app.get('/usuarios', (req: Request, res: Response): void => {
   res.status(200).json({ mensagem: 'Lista de usuários' });
@@ -34,7 +39,7 @@ app.post('/usuarios', (req: Request, res: Response): void => {
 
 app.get('/sobre', (req: Request, res: Response) => {
     res.json({
-        nome: 'Seu Nome',
+        nome: 'arthur',
         idade: 25,
         descricao: 'Sou um desenvolvedor apaixonado por tecnologia e aprendizado contínuo.'
       });
@@ -50,8 +55,8 @@ app.post('/comentarios', (req: Request, res: Response) => {
 });
 
 app.delete('/comentarios/:id', (req: Request, res: Response) => {
-  
-  res.status(204).send();
+  const id = req.params
+  res.status(200).json({mensagem: "comentario excluido"});
 });
 
 
