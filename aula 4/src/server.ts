@@ -1,6 +1,6 @@
 import express, { Application } from 'express';
 import { AppDataSource } from './db/data-source';
-import routes from './routes/user.routes';
+import routes from './routes/prod.routes';
 
 AppDataSource.initialize()
     .then(() => {
