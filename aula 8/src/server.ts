@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 import { AppDataSource } from './db/data-source';
-import routes from './routes/RoutesUser';
+import userRoutes from './routes/RoutesUser';
+import productRoutes from './routes/RoutesProd';
 import cors from "cors"
 import path from 'path';
 
@@ -10,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://127.0.0.1:3000']
+    // origin: ['http://localhost:3000', 'http://127.0.0.1:3000']
 }));
 
 // Routes
@@ -21,7 +22,8 @@ app.get('/', (req: Request, res: Response) => {
 
 AppDataSource.initialize()
     .then(() => {
-        app.use('/api', routes);
+        app.use(userRoutes);
+        app.use( productRoutes);
         app.listen(3000, () => console.log('Server rodando na porta http://localhost:3000'));
     })
     .catch((error) => console.log(error));

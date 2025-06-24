@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     const cadastroForm = document.getElementById('cadastroForm');
-
+    // ✅login
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const senha = document.getElementById('senha').value;
 
             try {
-                const response = await fetch('http://localhost:3000/api/usersLogin', {
+                const response = await fetch('http://localhost:3000/usersLogin', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email: email, password: senha })
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (response.status === 200) {
                     alert(data.message);
-                    window.location.href = 'home.html';
+                    window.location.href = './home.html';
                 } else if (response.status === 404) {
                     alert('Usuário não encontrado');
                 } else if (response.status === 401) {
@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+    // ❌cadastro
     if (cadastroForm) {
         cadastroForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const senha = document.getElementById('senha').value;
 
             try {
-                const response = await fetch('http://localhost:3000/api/users', {
+                const response = await fetch('http://localhost:3000/users', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name: nome, email: email, password: senha })

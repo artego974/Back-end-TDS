@@ -1,3 +1,12 @@
+:root { 
+    --cor-primaria: #e60000;
+    --cor-fundo: #121212;
+    --cor-card: #1f1f1f;
+    --cor-texto: #ffffff;
+    --cor-botao: #e60000;
+    --cor-hover: #ff1a1a;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,39 +15,47 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: var(--cor-fundo);
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    color: var(--cor-texto);
 }
 
 .container {
-    background-color: white;
+    background-color: var(--cor-card);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    box-shadow: 0 0 15px rgba(230, 0, 0, 0.5);
     width: 350px;
     text-align: center;
 }
 
 h2 {
     margin-bottom: 20px;
+    color: var(--cor-primaria);
 }
 
 form input {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
     border-radius: 8px;
+    color: var(--cor-texto);
+}
+
+form input::placeholder {
+    color: #bbb;
 }
 
 form button {
     width: 100%;
     padding: 12px;
-    background-color: #2d4164;
-    color: white;
+    background-color: var(--cor-botao);
+    color: var(--cor-texto);
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -46,15 +63,16 @@ form button {
 }
 
 form button:hover {
-    background-color: #1f2d47;
+    background-color: var(--cor-hover);
 }
 
 p {
     margin-top: 15px;
+    color: var(--cor-texto);
 }
 
 a {
-    color: #2d4164;
+    color: var(--cor-primaria);
     text-decoration: none;
 }
 
