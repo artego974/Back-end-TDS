@@ -107,11 +107,11 @@ h1 {
 }
 
 .edit-btn {
-    background-color: #007bff;
+    background-color: #dc3545;
 }
 
 .edit-btn:hover {
-    background-color: #339cff;
+    background-color: #ff4d5e;
 }
 
 .delete-btn {
@@ -120,4 +120,9 @@ h1 {
 
 .delete-btn:hover {
     background-color: #ff4d5e;
+}
+@media (max-width: 480px){
+    .card {
+        width: 400px;
+    }
 }
